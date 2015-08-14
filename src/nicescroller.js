@@ -139,7 +139,7 @@
   function _animate (args) {
     var startTime = +new Date, 
       pastTime = 0,
-      currentX, currentY, time = args.duration,
+      currentX, currentY, time = typeof args.duration === 'number' ? args.duration : 0,
       startX = this.current.x,
       startY = this.current.y,
       distenceX = args.x - startX,
