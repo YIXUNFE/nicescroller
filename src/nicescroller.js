@@ -139,7 +139,7 @@
   function _animate (args) {
     var startTime = +new Date, 
       pastTime = 0,
-      currentX, currentY, time = args.duration,
+      currentX, currentY, time = typeof args.duration === 'number' ? args.duration : 0,
       startX = this.current.x,
       startY = this.current.y,
       distenceX = args.x - startX,
@@ -321,6 +321,7 @@
       my = dir === 0 ? {duration: 0, destination: 0} : getLocation(point.y, point.y + deltaY, endTime, _currentScroller.maxScrollHeight, wrapperSize.height, deceleration)
       time = Math.max(mx.duration, my.duration)
     } else {
+      //吸附边界
       mx = dir === 1 ? {duration: 0, destination: 0} : {duration: 300, destination: point.x + deltaX}
       my = dir === 0 ? {duration: 0, destination: 0} : {duration: 300, destination: point.y + deltaY}
       time = 300
